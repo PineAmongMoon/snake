@@ -27,7 +27,8 @@ screen = pygame.display.set_mode(st.WindowSetting.size)
 pygame.display.set_caption(st.WindowSetting().game_tetle)
 my_snake = snake.Snake()
 my_edge = edge.Edge()
-my_apple = apple.Apple((st.GameAreaSetting.width//2, st.GameAreaSetting.hight//2))
+my_apple = apple.Apple(
+    (st.GameAreaSetting.width//2, st.GameAreaSetting.hight//2))
 
 while True:
 
@@ -57,7 +58,8 @@ while True:
         my_snake.grow()
 
         while True:
-            local = random.randint(0,st.GameAreaSetting.width-1), random.randint(0,st.GameAreaSetting.hight-1)
+            local = random.randint(
+                0, st.GameAreaSetting.width-1), random.randint(0, st.GameAreaSetting.hight-1)
             if local not in [item.local for item in my_snake.body]:
                 break
         my_apple = apple.Apple(local)
