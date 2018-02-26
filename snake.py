@@ -16,9 +16,7 @@ class Snake(st.SnakeSetting):
 
     def __init__(self):
         self.forward = self.RIGHT
-        self.body = []
-        for i in range(0, self.init_length):
-            self.body.append(SnakeBase((i, st.GameAreaSetting.hight - 1)))
+        self.body = [SnakeBase((i, st.GameAreaSetting.hight - 1)) for i in range(0, self.init_length)]
 
     def draw(self, surface):
         for item in self.body:
@@ -50,18 +48,14 @@ class Snake(st.SnakeSetting):
 
     def is_dead(self):
         next_local = self.next_local()
-        if next_local[0] < 0 \
-            or next_local[0] >= st.GameAreaSetting.width \
-            or next_local[1] < 0 \
-            or next_local[1] >= st.GameAreaSetting.hight :
+        if next_local[0] < 0 or\
+                next_local[0] >= st.GameAreaSetting.width or\
+                next_local[1] < 0 or\
+                next_local[1] >= st.GameAreaSetting.hight:
             return True
-        for item in self.body[1:] :
-            if next_local == item.local :
-                return True
+        if next_local in [item.local for item in self.body[1:]]:
+            return True
         return False
 
     def is_get_apple(self, apple):
-        if self.next_local() == apple.local:
-            return True
-        else:
-            return False
+        return self.next_local() == apple.local

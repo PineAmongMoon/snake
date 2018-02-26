@@ -50,6 +50,7 @@ while True:
                 my_snake.forward = my_snake.DOWN
 
     if my_snake.is_dead():
+        time.sleep(0.5)
         sys.exit()
 
     if my_snake.is_get_apple(my_apple):
@@ -57,13 +58,8 @@ while True:
 
         while True:
             local = random.randint(0,st.GameAreaSetting.width-1), random.randint(0,st.GameAreaSetting.hight-1)
-            flg = True
-            for item in my_snake.body:
-                if local == item.local:
-                    flg = False
-                    break
-            if flg:
-               break
+            if local not in [item.local for item in my_snake.body]:
+                break
         my_apple = apple.Apple(local)
 
     else:
