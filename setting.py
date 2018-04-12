@@ -10,11 +10,14 @@ import pygame
 
 
 class PointSetting:
+    """设定最基本的像素点的大小"""
     length = 6
     size = length, length
 
 
 class Point(PointSetting):
+    """最基本的像素点"""
+
     def __init__(self, color, local):
         self.local = local
         self.color = color
@@ -25,6 +28,11 @@ class Point(PointSetting):
 
 
 def coordinate_transform(local):
+    """
+
+    :param local:
+    :return:
+    """
     return (local[0] + 1) * PointSetting.length, (local[1] + 1) * PointSetting.length
 
 

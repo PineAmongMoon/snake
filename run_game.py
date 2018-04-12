@@ -7,23 +7,20 @@
 #
 
 import sys
-
 import random
-
 import time
-
 import pygame
-
 import setting as st
-
 import snake
-
 import edge
-
 import apple
 
 
 def run_game():
+    """
+    运行游戏
+    :return None:
+    """
     pygame.init()
     screen = pygame.display.set_mode(st.WindowSetting.size)
     pygame.display.set_caption(st.WindowSetting().game_tetle)
@@ -75,7 +72,10 @@ def run_game():
         my_snake.draw(screen)
         pygame.display.flip()
 
-        time.sleep(max(0, 0.125-time.clock()+begin_time))
+        try:
+            time.sleep(0.125-time.clock()+begin_time)
+        except ValueError:
+            pass
 
 
 if __name__ == '__main__':

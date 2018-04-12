@@ -34,8 +34,8 @@ class Snake(st.SnakeSetting):
                 local = 0, -1
             elif self.forward == self.DOWN:
                 local = 0, 1
-            local = self.body[-1].local[0] + \
-                local[0], self.body[-1].local[1] + local[1]
+            local = self.body[-1].local[0] + local[0], \
+                self.body[-1].local[1] + local[1]
             if local != self.body[-2].local:
                 return local
             else:
