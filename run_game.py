@@ -14,7 +14,7 @@ import setting as st
 import snake
 import edge
 import apple
-
+from pygame.mixer import music
 
 def run_game():
     """
@@ -28,6 +28,8 @@ def run_game():
     my_edge = edge.Edge()
     my_apple = apple.Apple(
         (st.GameAreaSetting.width//2, st.GameAreaSetting.hight//2))
+    music.load(r"/Users/juyuanmao/code/snake/bgm.aiff")
+    music.play(loops=-1)
 
     while True:
 
